@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Trust Beauty & Spa | Gaborone, Botswana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #f7f0e8;
+      --blush: #e8c4b0;
+      --rose: #c4836a;
+      --deep: #2a1a14;
+      --text: #3d2a22;
+      --muted: #8a6e63;
+      --white: #fdfaf7;
+      --gold: #b8966e;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(247, 240, 232, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(184, 150, 110, 0.2);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 600; letter-spacing: 0.02em;
+      color: var(--deep);
+    }
+    .nav-logo span { color: var(--rose); font-style: italic; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--muted); font-size: 0.82rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--rose); }
+    .nav-cta {
+      background: var(--rose); color: var(--white);
+      padding: 0.6rem 1.5rem; border-radius: 2px;
+      font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.3s;
+    }
+    .nav-cta:hover { background: var(--deep); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(232, 196, 176, 0.25) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 6rem 4rem 6rem 6rem;
+    }
+    .hero-tag {
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .hero-tag::before {
+      content: ''; display: block;
+      width: 2rem; height: 1px; background: var(--gold);
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      font-weight: 300; line-height: 1.05;
+      color: var(--deep);
+      margin-bottom: 1.8rem;
+    }
+    .hero-title em { font-style: italic; color: var(--rose); }
+    .hero-sub {
+      font-size: 1rem; color: var(--muted);
+      line-height: 1.7; max-width: 420px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; align-items: center; }
+    .btn-primary {
+      background: var(--deep); color: var(--white);
+      padding: 0.9rem 2.2rem; border-radius: 2px;
+      font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.3s;
+    }
+    .btn-primary:hover { background: var(--rose); }
+    .btn-outline {
+      color: var(--deep); font-size: 0.82rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; display: flex; align-items: center; gap: 0.5rem;
+      transition: color 0.3s;
+    }
+    .btn-outline:hover { color: var(--rose); }
+    .btn-outline::after { content: '→'; }
+
+    .hero-right {
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      padding: 4rem 4rem 4rem 2rem;
+    }
+    .hero-img-wrap {
+      width: 100%; max-width: 520px; aspect-ratio: 3/4;
+      position: relative;
+    }
+    .hero-img-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=800&q=80') center/cover no-repeat;
+      border-radius: 4px;
+    }
+    .hero-float-card {
+      position: absolute; bottom: -1rem; left: -3rem;
+      background: var(--white); padding: 1.5rem 2rem;
+      border-radius: 4px;
+      box-shadow: 0 20px 60px rgba(42,26,20,0.12);
+      min-width: 220px;
+    }
+    .hero-float-card .label {
+      font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 0.5rem;
+    }
+    .hero-float-card .value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 600; color: var(--deep);
+    }
+    .hero-float-card .sub { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+
+    .hero-badge {
+      position: absolute; top: 4rem; right: -1rem;
+      width: 100px; height: 100px;
+      background: var(--rose);
+      border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: var(--white);
+    }
+    .hero-badge .b-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 600; line-height: 1;
+    }
+    .hero-badge .b-text { font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+    /* Decorative marks */
+    .deco-line {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60%; height: 60%;
+      border: 1px solid rgba(184,150,110,0.15);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    /* SECTION STYLES */
+    section { padding: 6rem 6rem; }
+    .section-tag {
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .section-tag::before {
+      content: ''; display: block;
+      width: 2rem; height: 1px; background: var(--gold);
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 300; line-height: 1.15; color: var(--deep);
+    }
+    .section-title em { font-style: italic; color: var(--rose); }
+
+    /* SERVICES */
+    #services { background: var(--deep); color: var(--white); }
+    #services .section-tag { color: var(--blush); }
+    #services .section-tag::before { background: var(--blush); }
+    #services .section-title { color: var(--white); }
+    #services .section-title em { color: var(--blush); }
+
+    .services-intro {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: end; margin-bottom: 4rem;
+    }
+    .services-desc { color: rgba(255,255,255,0.6); line-height: 1.8; margin-top: 1.5rem; }
+
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px; background: rgba(255,255,255,0.08);
+    }
+    .service-card {
+      background: var(--deep);
+      padding: 2.5rem 2rem;
+      transition: background 0.4s;
+      cursor: default;
+    }
+    .service-card:hover { background: rgba(232,196,176,0.08); }
+    .service-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem; font-weight: 300;
+      color: rgba(184,150,110,0.3); line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+    .service-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+    .service-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 400;
+      color: var(--white); margin-bottom: 0.8rem;
+    }
+    .service-list {
+      list-style: none; color: rgba(255,255,255,0.5);
+      font-size: 0.82rem; line-height: 2;
+    }
+    .service-card-img {
+      width: calc(100% + 4rem); margin: -2.5rem -2rem 1.5rem;
+      height: 180px; object-fit: cover; display: block;
+    }
+    .service-price {
+      margin-top: 1.2rem;
+      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--blush);
+    }
+
+    /* ABOUT */
+    #about {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 6rem; align-items: center;
+      padding: 6rem;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-img {
+      width: 100%; aspect-ratio: 4/5;
+      background: url('https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=800&q=80') center/cover no-repeat;
+      border-radius: 4px;
+      position: relative; overflow: hidden;
+    }
+    .about-img::after {
+      content: '✦';
+      position: absolute; bottom: 2rem; right: 2rem;
+      font-size: 3rem; color: rgba(255,255,255,0.2);
+    }
+    .about-pull {
+      position: absolute; top: -2rem; right: -3rem;
+      background: var(--rose); color: var(--white);
+      padding: 2rem; border-radius: 4px;
+      width: 200px;
+    }
+    .about-pull .q {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-style: italic; line-height: 1.5;
+    }
+    .about-pull .attr { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.8rem; opacity: 0.8; }
+
+    .about-text .section-tag { margin-top: 0; }
+    .about-body { color: var(--muted); line-height: 1.9; margin-top: 1.5rem; }
+    .about-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem; margin-top: 2.5rem;
+    }
+    .stat-item { border-top: 1px solid rgba(196,131,106,0.25); padding-top: 1rem; }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem; font-weight: 600; color: var(--rose); line-height: 1;
+    }
+    .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; }
+
+    /* PRICES */
+    #pricing { background: var(--white); }
+    .pricing-header {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      align-items: end; margin-bottom: 3rem;
+    }
+    .pricing-note { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+
+    .price-tables {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    .price-table {
+      border: 1px solid rgba(196,131,106,0.2);
+      border-radius: 4px; overflow: hidden;
+    }
+    .price-table-head {
+      background: var(--deep); color: var(--white);
+      padding: 1.2rem 1.8rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .price-table-head .icon { font-size: 1.1rem; }
+    .price-table-head .name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+    }
+    .price-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.9rem 1.8rem;
+      border-bottom: 1px solid rgba(196,131,106,0.1);
+      font-size: 0.88rem;
+    }
+    .price-row:last-child { border-bottom: none; }
+    .price-row .item { color: var(--text); }
+    .price-row .price { color: var(--rose); font-weight: 500; }
+
+    /* BOOKING / CONTACT */
+    #contact {
+      background: var(--rose);
+      color: var(--white);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; padding: 0;
+    }
+    .contact-info {
+      padding: 6rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .contact-info .section-tag { color: rgba(255,255,255,0.6); }
+    .contact-info .section-tag::before { background: rgba(255,255,255,0.6); }
+    .contact-info .section-title { color: var(--white); }
+    .contact-info .section-title em { color: var(--cream); font-style: italic; }
+
+    .contact-details { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .contact-item .c-icon {
+      width: 2.5rem; height: 2.5rem;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; flex-shrink: 0;
+    }
+    .contact-item .c-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.7; margin-bottom: 0.2rem; }
+    .contact-item .c-value { font-size: 0.95rem; }
+    .contact-item a { color: var(--white); text-decoration: none; }
+    .contact-item a:hover { text-decoration: underline; }
+
+    .wa-btn {
+      margin-top: 2.5rem;
+      display: inline-flex; align-items: center; gap: 0.8rem;
+      background: #25D366; color: white;
+      padding: 1rem 2rem; border-radius: 2px;
+      text-decoration: none; font-size: 0.85rem;
+      letter-spacing: 0.05em; font-weight: 500;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .wa-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+
+    .contact-form-side {
+      background: var(--cream);
+      padding: 6rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .contact-form-side h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; color: var(--deep); margin-bottom: 2rem;
+    }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label {
+      display: block; font-size: 0.72rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: var(--white);
+      border: 1px solid rgba(196,131,106,0.25);
+      border-radius: 2px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem; color: var(--deep);
+      outline: none; transition: border-color 0.3s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--rose);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      width: 100%; padding: 1rem;
+      background: var(--deep); color: var(--white);
+      border: none; border-radius: 2px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem; letter-spacing: 0.1em;
+      text-transform: uppercase; cursor: pointer;
+      transition: background 0.3s;
+    }
+    .form-submit:hover { background: var(--rose); }
+    #form-success {
+      display: none; margin-top: 1rem;
+      background: #e8f5e9; color: #2e7d32;
+      padding: 0.8rem 1rem; border-radius: 2px;
+      font-size: 0.85rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--deep); color: rgba(255,255,255,0.5);
+      padding: 3rem 6rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; color: var(--white); font-weight: 600;
+    }
+    .footer-logo span { color: var(--blush); font-style: italic; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; }
+    .footer-links a:hover { color: var(--blush); }
+    .footer-credit { font-size: 0.75rem; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up {
+      opacity: 0; animation: fadeUp 0.9s ease forwards;
+    }
+    .fade-up:nth-child(1) { animation-delay: 0.1s; }
+    .fade-up:nth-child(2) { animation-delay: 0.25s; }
+    .fade-up:nth-child(3) { animation-delay: 0.4s; }
+    .fade-up:nth-child(4) { animation-delay: 0.55s; }
+
+    /* SCROLL REVEAL */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 5rem 2rem 2rem; }
+      .hero-right { display: none; }
+      #about, .services-intro { grid-template-columns: 1fr; gap: 2rem; }
+      section, #about { padding: 4rem 2rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .price-tables { grid-template-columns: 1fr; }
+      #contact { grid-template-columns: 1fr; }
+      .contact-info, .contact-form-side { padding: 3rem 2rem; }
+      .pricing-header { grid-template-columns: 1fr; gap: 1rem; }
+      footer { padding: 2rem; flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Trust <span>Beauty & Spa</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag fade-up">Gaborone's Beauty Sanctuary</div>
+    <h1 class="hero-title fade-up">
+      Your life can't be perfect,<br>but your <em>skin can be.</em>
+    </h1>
+    <p class="hero-sub fade-up">
+      Premium beauty treatments in the heart of Block 3, Gaborone. From transformative facials to luxurious massages — experience beauty care that truly listens.
+    </p>
+    <div class="hero-actions fade-up">
+      <a href="#contact" class="btn-primary">Book Appointment</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-right fade-up">
+    <div class="hero-img-wrap">
+      <div class="hero-img-bg"></div>
+      <div class="hero-float-card">
+        <div class="label">Open Now</div>
+        <div class="value">Block 3</div>
+        <div class="sub">Opp. SSK, Gaborone</div>
+      </div>
+      <div class="hero-badge">
+        <span class="b-num">88%</span>
+        <span class="b-text">Recommend</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-intro">
+    <div>
+      <div class="section-tag">What We Offer</div>
+      <h2 class="section-title">Treatments for every<br><em>beautiful you</em></h2>
+    </div>
+    <p class="services-desc">
+      We specialise in advanced skin treatments, professional nail care, lash artistry, full body massages, and waxing. Every service is tailored to your unique needs.
+    </p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <img class="service-card-img" src="https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=500&q=80" alt="Facial treatment" />
+      <div class="service-num">01</div>
+      <div class="service-name">Facials</div>
+      <ul class="service-list">
+        <li>Chemical Peels</li>
+        <li>Deep Cleansing</li>
+        <li>Micro-needling</li>
+        <li>Algae Peels</li>
+        <li>Men's Full Facial</li>
+      </ul>
+      <div class="service-price">From P300</div>
+    </div>
+    <div class="service-card reveal">
+      <img class="service-card-img" src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500&q=80" alt="Nails and lashes" />
+      <div class="service-num">02</div>
+      <div class="service-name">Nails & Lashes</div>
+      <ul class="service-list">
+        <li>Gel Overlays</li>
+        <li>Pedicures</li>
+        <li>Manicures</li>
+        <li>Cluster Lashes</li>
+        <li>YY / Hybrid Lashes</li>
+      </ul>
+      <div class="service-price">From P120</div>
+    </div>
+    <div class="service-card reveal">
+      <img class="service-card-img" src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=500&q=80" alt="Massage and spa" />
+      <div class="service-num">03</div>
+      <div class="service-name">Massage & Spa</div>
+      <ul class="service-list">
+        <li>Full Body Massage</li>
+        <li>Back Massage</li>
+        <li>Hot Stone Treatment</li>
+        <li>Back Scrub</li>
+      </ul>
+      <div class="service-price">From P120</div>
+    </div>
+    <div class="service-card reveal">
+      <img class="service-card-img" src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=500&q=80" alt="Waxing" />
+      <div class="service-num">04</div>
+      <div class="service-name">Waxing</div>
+      <ul class="service-list">
+        <li>Eyebrow Waxing</li>
+        <li>Upper Lip</li>
+        <li>Full Body Waxing</li>
+        <li>Brazilian Wax</li>
+      </ul>
+      <div class="service-price">From P80</div>
+    </div>
+    <div class="service-card reveal">
+      <img class="service-card-img" src="https://images.unsplash.com/photo-1526413232644-8a40f03cc03b?w=500&q=80" alt="Makeup" />
+      <div class="service-num">05</div>
+      <div class="service-name">Makeup</div>
+      <ul class="service-list">
+        <li>Event Makeup</li>
+        <li>Bridal Makeup</li>
+        <li>Natural Glam</li>
+        <li>Full Glam</li>
+      </ul>
+      <div class="service-price">On request</div>
+    </div>
+    <div class="service-card reveal">
+      <img class="service-card-img" src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=500&q=80" alt="Spa specials" />
+      <div class="service-num">06</div>
+      <div class="service-name">Specials</div>
+      <ul class="service-list">
+        <li>Pedi Galore — P280</li>
+        <li>Skin Tag Removal</li>
+        <li>Pedicure + Gel Toes</li>
+        <li>Combo Packages</li>
+      </ul>
+      <div class="service-price">From P150</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-visual reveal">
+    <div class="about-img"></div>
+    <div class="about-pull">
+      <div class="q">"Helping every client feel confident and beautiful."</div>
+      <div class="attr">— Trust Beauty & Spa</div>
+    </div>
+  </div>
+  <div class="about-text">
+    <div class="section-tag">Our Story</div>
+    <h2 class="section-title">Beauty born from <em>trust</em></h2>
+    <p class="about-body">
+      Trust Beauty & Spa is Gaborone's home for premium beauty and wellness. Located in Block 3, opposite Sir Seretse Khama Junior Secondary School, we've built a reputation for exceptional service, genuine care, and results that speak for themselves.
+    </p>
+    <p class="about-body" style="margin-top:1rem;">
+      From advanced skincare to relaxing spa days, every treatment is delivered with precision and heart. We believe beauty is confidence — and we're here to help you find yours.
+    </p>
+    <div class="about-stats">
+      <div class="stat-item reveal">
+        <div class="stat-num">348K</div>
+        <div class="stat-label">Facebook Followers</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-num">88%</div>
+        <div class="stat-label">Client Recommendation Rate</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-num">6+</div>
+        <div class="stat-label">Treatment Categories</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Happy Clients</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" style="padding: 0; overflow: hidden;">
+  <div style="display:grid; grid-template-columns: repeat(4,1fr); grid-template-rows: 260px 260px; gap: 4px;">
+    <div style="grid-column:1/3; background: url('https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=900&q=80') center/cover no-repeat;"></div>
+    <div style="background: url('https://images.unsplash.com/photo-1526413232644-8a40f03cc03b?w=600&q=80') center/cover no-repeat;"></div>
+    <div style="background: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=80') center/cover no-repeat;"></div>
+    <div style="background: url('https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=600&q=80') center/cover no-repeat;"></div>
+    <div style="grid-column:2/4; background: url('https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=900&q=80') center/cover no-repeat;"></div>
+    <div style="background: url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80') center/cover no-repeat;"></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="pricing-header">
+    <div>
+      <div class="section-tag">Transparent Rates</div>
+      <h2 class="section-title">Simple, honest <em>pricing</em></h2>
+    </div>
+    <p class="pricing-note">
+      All prices are in Botswana Pula (BWP). For custom packages or group bookings, reach us on WhatsApp at +267 74 363 636. Prices may vary — confirm when booking.
+    </p>
+  </div>
+
+  <div class="price-tables">
+    <div class="price-table reveal">
+      <div class="price-table-head">
+        <span class="icon">✨</span>
+        <span class="name">Facials & Skin</span>
+      </div>
+      <div class="price-row"><span class="item">Men's Full Facial + Pedicure</span><span class="price">P300</span></div>
+      <div class="price-row"><span class="item">Chemical Peel</span><span class="price">On request</span></div>
+      <div class="price-row"><span class="item">Deep Cleansing Facial</span><span class="price">On request</span></div>
+      <div class="price-row"><span class="item">Skin Tag Removal</span><span class="price">From P150</span></div>
+      <div class="price-row"><span class="item">Micro-needling</span><span class="price">On request</span></div>
+    </div>
+    <div class="price-table reveal">
+      <div class="price-table-head">
+        <span class="icon">💅</span>
+        <span class="name">Nails & Lashes</span>
+      </div>
+      <div class="price-row"><span class="item">Pedi Galore (Pedicure + Gel)</span><span class="price">P280</span></div>
+      <div class="price-row"><span class="item">Standard Pedicure</span><span class="price">On request</span></div>
+      <div class="price-row"><span class="item">Gel Overlay</span><span class="price">On request</span></div>
+      <div class="price-row"><span class="item">Cluster / YY / Hybrid Lashes</span><span class="price">On request</span></div>
+      <div class="price-row"><span class="item">Manicure</span><span class="price">On request</span></div>
+    </div>
+    <div class="price-table reveal">
+      <div class="price-table-head">
+        <span class="icon">🌿</span>
+        <span class="name">Massage & Spa</span>
+      </div>
+      <div class="price-row"><span class="item">Back Massage</span><span class="price">P120</span></div>
+      <div class="price-row"><span class="item">Full Body Massage</span><span class="price">On request</span></div>
+      <div class="price-row"><span class="item">Hot Stone Treatment</span><span class="price">On request</span></div>
+      <div class="price-row"><span class="item">Back Scrub</span><span class="price">On request</span></div>
+    </div>
+    <div class="price-table reveal">
+      <div class="price-table-head">
+        <span class="icon">🌸</span>
+        <span class="name">Waxing & Makeup</span>
+      </div>
+      <div class="price-row"><span class="item">Eyebrow Waxing</span><span class="price">On request</span></div>
+      <div class="price-row"><span class="item">Full Body Wax</span><span class="price">On request</span></div>
+      <div class="price-row"><span class="item">Brazilian Wax</span><span class="price">On request</span></div>
+      <div class="price-row"><span class="item">Event / Bridal Makeup</span><span class="price">On request</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div id="contact">
+  <div class="contact-info">
+    <div class="section-tag">Get in Touch</div>
+    <h2 class="section-title">Ready to <em>glow?</em></h2>
+
+    <div class="contact-details">
+      <div class="contact-item">
+        <div class="c-icon">📍</div>
+        <div>
+          <div class="c-label">Location</div>
+          <div class="c-value">Block 3, opposite SSK<br>Plot 28059, Gaborone</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="c-icon">📞</div>
+        <div>
+          <div class="c-label">Phone / WhatsApp</div>
+          <div class="c-value"><a href="tel:+26774363636">+267 74 363 636</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="c-icon">📘</div>
+        <div>
+          <div class="c-label">Social Media</div>
+          <div class="c-value">
+            <a href="https://www.facebook.com/trustbeautyandspa" target="_blank">Facebook</a> &nbsp;·&nbsp;
+            <a href="https://www.instagram.com/trusty_beauty_spa" target="_blank">@trusty_beauty_spa</a>
+          </div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="c-icon">🕐</div>
+        <div>
+          <div class="c-label">Hours</div>
+          <div class="c-value">Open now · Contactless delivery available<br>Online booking supported</div>
+        </div>
+      </div>
+    </div>
+
+    <a href="https://wa.me/26774363636?text=Hi%20Trust%20Beauty%20%26%20Spa%2C%20I%27d%20like%20to%20book%20an%20appointment." class="wa-btn" target="_blank">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Chat on WhatsApp
+    </a>
+  </div>
+
+  <div class="contact-form-side">
+    <h3>Send an Enquiry</h3>
+    <form id="enquiry-form">
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" placeholder="Kefilwe Mosu" required />
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+267 ..." />
+      </div>
+      <div class="form-group">
+        <label>Service Interested In</label>
+        <select>
+          <option value="">Select a service...</option>
+          <option>Facial Treatment</option>
+          <option>Nails & Lashes</option>
+          <option>Massage & Spa</option>
+          <option>Waxing</option>
+          <option>Makeup</option>
+          <option>Other / Combo Package</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Tell us what you'd like..."></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send Enquiry</button>
+      <div id="form-success">✓ Enquiry sent! We'll be in touch shortly via WhatsApp.</div>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Trust <span>Beauty & Spa</span></div>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="footer-credit">© 2026 Trust Beauty & Spa, Gaborone · Built by CodeEl</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Form handler
+  document.getElementById('enquiry-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('form-success').style.display = 'block';
+    this.reset();
+    setTimeout(() => document.getElementById('form-success').style.display = 'none', 5000);
+  });
+</script>
+
+</body>
+</html>
